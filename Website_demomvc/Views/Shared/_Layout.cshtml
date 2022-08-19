@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    @RenderSection("Styles", false);
+</head>
+
+<body>
+    <div id="main_wrapper">
+        <div id="common_part">
+            <div id="header">
+                <img id="logo-header" src="/assets/logo.jpg">
+                <div id="tiltle-header">
+                    Harley-Davidson® of Saigon, Hanoi, Danang
+                </div>
+                <div id="search-bar">
+                    <button class="button-search" type="submit">
+                        <a asp-controller="Account" asp-action="LoginAccount"> ĐĂNG NHẬP </a>
+                    </button>
+                    <button class="button-search" type="submit">
+                        <a asp-controller="Account" asp-action="Logout"> ĐĂNG XUẤT </a>
+                    </button>
+                </div>
+            </div>
+            <div id="menu">
+                <div class="menu">
+                    <a href="" title="freetuts">Trang chủ</a>
+                    <a asp-controller="Products" asp-action="Index" title="freetuts">Sản phẩm</a>
+                    <a href="" title="freetuts">Tin tức</a>
+                    <a href="" title="freetuts">Liên hệ</a>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+        <div id="footer">
+
+        </div>
+    </div>
+</body>
+
+</html>

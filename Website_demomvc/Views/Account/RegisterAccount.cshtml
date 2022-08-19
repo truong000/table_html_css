@@ -1,0 +1,86 @@
+﻿@model Website_demomvc.Models.Account.RegisterViewModel
+
+@{
+    ViewData["Title"] = "RegisterAccount";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@*<h1>RegisterAccount</h1>
+
+<h4>RegisterViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegisterAccount">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+<section>
+    <!--Bắt Đầu Phần Hình Ảnh-->
+    <div class="img-bg">
+        <img src="~/assets/hello.jpg" alt="Hình Ảnh ">
+    </div> 
+    <!--Kết Thúc Phần Hình Ảnh-->
+    <!--Bắt Đầu Phần Nội Dung-->
+    <div class="noi-dung">
+        <div class="form">
+            <h2>Trang Đăng Nhập</h2>
+            <form asp-action="RegisterAccount">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="input-form">
+                    <span>Họ vè tên</span>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <span>Tuổi</span>
+                    <input asp-for="Age" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <span>Email</span>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <span>Mật Khẩu</span>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <input type="submit" value="Đăng Ký">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Kết Thúc Phần Nội Dung-->
+</section>

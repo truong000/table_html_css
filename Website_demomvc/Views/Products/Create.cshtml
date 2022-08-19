@@ -1,0 +1,43 @@
+﻿@model Website_demomvc.DAO.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section>
+    <!--Bắt Đầu Phần Hình Ảnh-->
+    <div class="img-bg">
+        <img src="~/assets/hello.jpg" alt="Hình Ảnh " style="height: 300px; width: 500px">
+    </div> 
+    <!--Kết Thúc Phần Hình Ảnh-->
+    <!--Bắt Đầu Phần Nội Dung-->
+    <div class="noi-dung">
+        <div class="form">
+            <h2>Trang Đăng Nhập</h2>
+            <form asp-action="RegisterAccount">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="input-form">
+                    <span>Tên sản phẩm</span>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger" ></span>
+                </div>
+                <div class="input-form">
+                    <span>Gía</span>
+                    <input asp-for="Price"  type="number" min="0" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <span>Số lương</span>
+                    <input asp-for="Amount" type="number" min="0" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <input type="submit" value="Đăng Ký">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Kết Thúc Phần Nội Dung-->
+</section>

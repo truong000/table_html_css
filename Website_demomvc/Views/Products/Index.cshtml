@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Website_demomvc.DAO.Product>
+﻿@model IEnumerable<Website_demomvc.DTO.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,7 +6,7 @@
     int i = 0;
 }
 
-        <div id="main_content">
+<div id="main_content">
             <div id="content">
                 <div class="my_action">
                     <div class="mybtn">
@@ -92,4 +92,11 @@
                 </div>
             </div>
             <div style="clear: both"></div>
-        </div>
+</div>
+@section Script {
+<script>
+$(document).ready(function() {
+    alert('Bạn đã đăng nhập thành công');
+})
+</script>
+}

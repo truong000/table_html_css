@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     @RenderSection("Styles", false);
 </head>
 
@@ -33,7 +35,7 @@
                 <div class="menu">
                     <a href="" title="freetuts">Trang chủ</a>
                     <a asp-controller="Products" asp-action="Index" title="freetuts">Sản phẩm</a>
-                    <a href="" title="freetuts">Tin tức</a>
+                    <a asp-controller="Category" asp-action="Index" title="freetuts">Loại sản phẩm</a>
                     <a href="" title="freetuts">Liên hệ</a>
                 </div>
             </div>
@@ -43,6 +45,9 @@
 
         </div>
     </div>
+
+     @await RenderSectionAsync("Script", required: false)
+
 </body>
 
 </html>

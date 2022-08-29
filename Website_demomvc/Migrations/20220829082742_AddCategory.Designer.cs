@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Website_demomvc.DTO;
+
 
 #nullable disable
 
 namespace Website_demomvc.Migrations
 {
     [DbContext(typeof(Website_demomvcDbContext))]
-    partial class Website_demomvcDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220829082742_AddCategory")]
+    partial class AddCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

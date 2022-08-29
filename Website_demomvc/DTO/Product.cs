@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Website_demomvc.DAO
+namespace Website_demomvc.DTO
 {
     public class Product
     {

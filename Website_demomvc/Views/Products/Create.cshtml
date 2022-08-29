@@ -1,40 +1,45 @@
-﻿@model Website_demomvc.DAO.Product
+﻿@model Website_demomvc.DTO.Product
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
 
 <section>
     <!--Bắt Đầu Phần Hình Ảnh-->
     <div class="img-bg">
-        <img src="~/assets/hello.jpg" alt="Hình Ảnh " style="height: 300px; width: 500px">
+        <img src="~/assets/hello.jpg" alt="Hình Ảnh ">
     </div> 
     <!--Kết Thúc Phần Hình Ảnh-->
     <!--Bắt Đầu Phần Nội Dung-->
     <div class="noi-dung">
         <div class="form">
-            <h2>Trang Đăng Nhập</h2>
-            <form asp-action="RegisterAccount">
+            <h2>Tạo mới sản phẩm</h2>
+            <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="input-form">
                     <span>Tên sản phẩm</span>
                     <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger" ></span>
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="input-form">
-                    <span>Gía</span>
-                    <input asp-for="Price"  type="number" min="0" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
-                </div>
-                <div class="input-form">
-                    <span>Số lương</span>
-                    <input asp-for="Amount" type="number" min="0" class="form-control" />
+                    <span>Số lượng</span>
+                    <input asp-for="Amount" class="form-control" />
                     <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
                 <div class="input-form">
-                    <input type="submit" value="Đăng Ký">
+                    <span>Giá thành</span>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <span>Mô tả</span>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="input-form">
+                    <input type="submit" value="Tạo mới">
                 </div>
             </form>
         </div>

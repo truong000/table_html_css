@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Website_demomvc.DTO.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //int i = 0;
+}
+
+@section Styles {
+<style>
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+}
+
+<div id="main_content">
+<h2>Danh sách học sinh</h2>
+<div class="row" style="margin-bottom:15px;">
+    <div class="col-md-12">
+        <a href="#" data-toggle="modal" data-target="#modalCreateUpdate" class="btn btn-primary">Thêm mới</a>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên danh mục</th>
+            <th>Mô tả</th>
+            <th>Ngày tạo</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody id="show_data"></tbody>
+</table>
+
+
+</div>
+
+@section Script{
+    <script>
+        $(document).ready(function () {
+            LoadData();
+
+            function LoadData() {
+                $.ajax({
+                    url: '/Category/GetData',
+                    type: 'GET',
+                    success: function (res) {
+                        if (res.TotalItems > 0) {
+                            var items = res.data;
+                            var html = "";
+                            for (let i = 0; i < res.TotalItems; i++) {
+                                html += "<tr>";
+                                html += "<td>"+(i+1)+"</td>";
+                                html += "<td>" + items[i].CatName +"</td>";
+                                html += "<td>" + items[i].CatDescribe+"</td>";
+                                html += "<td>" + items[i].CreatedDate+"</td>";
+                                html += "<td><a href='#' class='btn btn-warning'>Sửa</a> | <a href='#' class='btn btn-danger'>Xóa</a></td>";
+                                html += "</tr>";
+                            }
+                            $('#show_data').html(html);
+                        }
+                        console.log(res);
+                    }
+                });
+            }
+        });   
+    </script>
+}

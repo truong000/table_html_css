@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Website_demomvc.DAO;
+using Website_demomvc.DTO;
 
 namespace Website_demomvc.Controllers
 {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Website_demomvc.DAO;
+using Website_demomvc.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 

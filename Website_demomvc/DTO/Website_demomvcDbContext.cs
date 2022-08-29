@@ -2,7 +2,7 @@
 using Website_demomvc.DTO;
 using Website_demomvc.Models.Account;
 
-namespace Website_demomvc.DAO
+namespace Website_demomvc.DTO
 {
     public class Website_demomvcDbContext : DbContext
     {
@@ -24,8 +24,7 @@ namespace Website_demomvc.DAO
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Account> Accounts { get; set; }                                          
-        public DbSet<Website_demomvc.Models.Account.RegisterViewModel>? RegisterViewModel { get; set; }
-        public DbSet<Website_demomvc.Models.Account.LoginViewModel>? LoginViewModel { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
 

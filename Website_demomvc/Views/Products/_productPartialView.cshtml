@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Website_demomvc.DTO.Product>
+@{int i = 0;}
+
+@foreach (var item in Model) {
+                    <div class="my_row">
+                            <div class="my_col" id="my_col1">
+                                @(++i)
+                            </div>
+                            <div class="my_col" id="my_col2">
+                                @item.Name
+                            </div>
+                            <div class="my_col" id="my_col3">
+                                @item.Amount
+                            </div>
+                            <div class="my_col" id="my_col4">
+                                @item.Price
+                            </div>
+                            <div class="my_col" id="my_col5">
+                                @item.DateCreate
+                            </div>
+                            <div class="my_col" id="my_col6">
+                                <div id="my_col6_col">
+                                    <button class="btn"><i class="fa-solid fa-circle-info"></i> 
+                                        <a asp-action="Create" asp-route-id="@item.Id">Chi tiết</a>       
+                                    </button>
+                                </div>
+                                <div id="my_col6_col">
+                                    <button class="btn"><i class="fa-solid fa-square-pen"></i>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a>       
+                                    </button>
+                                </div>
+                                <div id="my_col6_col">
+                                    <button class="btn" id="btn_delete"><i class="fa-solid fa-trash-can"></i>
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>   
+                                    </button>
+                                </div>
+                            </div>
+                    </div>
+}
+

@@ -2,3 +2,27 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section Script {
+<script>
+    //window.onload = function(){
+    //    var btn = document.getElementById('btn1');
+    //    btn.addEventListener('click', clickHere);
+    //}
+    //function clickHere() {
+    //alert('Oke nhe')
+    //}
+$(document).ready(function() {
+    $('#btn1').click(function() {
+        $('#btn1').css('background-color', 'yellow');
+        alert('Xin chào Xuân Trường')
+    }); 
+});
+
+</script>
+}
+
+
+<div id="main_content">
+    <button id="btn1">Click here</button>
+</div>
+

@@ -18,8 +18,11 @@
                     <div class="mybtn">
                         <form class="example">
                             <input class="input-search" type="text" placeholder="Search.." name="search2">
-                            <button class="button-search" type="submit"><i class="fa fa-search"></i></button>
+                            <button class="button-search" type="submit" id="searchTxt"><i class="fa fa-search"></i></button>
                         </form>
+                        <label for="gsearch">Tìm kiếm:</label>
+                          <input type="search" id="gsearch" name="gsearch">
+                          <input type="submit" id="btn-search">
                     </div>
                 </div>
                 <div class="title">
@@ -49,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content_table">
+                    <div class="content_table" id="productTable">
                 @foreach (var item in Model)
                 {
                     <div class="my_row">
@@ -93,10 +96,23 @@
             </div>
             <div style="clear: both"></div>
 </div>
-@section Script {
-<script>
-$(document).ready(function() {
-    alert('Bạn đã đăng nhập thành công');
-})
-</script>
+@section Script{
+    <script>
+    $(document).ready(function () {           
+            $('#btn-search').on('click', function() {
+                $.ajax({
+                    type: "POST",
+                    url: "/Products/SearchProduct",
+                    data: {
+                        "name": $('#gsearch').val()
+                    },
+                    success: function (response) {
+                        $("#productTable").html(response);
+                        //$("#productTable").modal('show');
+                    },
+                });
+            });
+        });   
+
+    </script>
 }

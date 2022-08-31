@@ -3,80 +3,122 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //int i = 0;
+    int i = 0;
 }
 
 @section Styles {
-<style>
-    table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-}
-
-<div id="main_content">
-<h2>Danh sách học sinh</h2>
-<div class="row" style="margin-bottom:15px;">
-    <div class="col-md-12">
-        <a href="#" data-toggle="modal" data-target="#modalCreateUpdate" class="btn btn-primary">Thêm mới</a>
+    <div id="main_content">
+        <h2>Danh sách học sinh</h2>
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-12">
+                <button class="button-search" id="btnCreate">
+                    Thêm mới
+                </button>
+                <label for="gsearch">Tìm kiếm:</label>
+                <input type="search" id="gsearch" name="gsearch">
+                <input type="submit" id="btn-search">
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên danh mục</th>
+                    <th>Mô tả</th>
+                    <th>Ngày tạo</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="show_data">
+            </tbody>
+        </table>
+        <div class="modal" tabindex="-1" id="modalCreate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text"> Tên</span>
+                        <input type="text" aria-label="First name" class="form-control" id="nameCat">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Mô tả</span>
+                        <input type="text" aria-label="First name" class="form-control" id="desCat">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSave">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>STT</th>
-            <th>Tên danh mục</th>
-            <th>Mô tả</th>
-            <th>Ngày tạo</th>
-            <th>Thao tác</th>
-        </tr>
-    </thead>
-    <tbody id="show_data"></tbody>
-</table>
 
-
-</div>
-
-@section Script{
+    @section Script{
     <script>
-        $(document).ready(function () {
-            LoadData();
+        $(document).ready(function() {
+            ListCategory();
+            $('#btnCreate').on('click', function() {
+                $('#modalCreate').modal('show');
+            });
+            $('#btnSave').on('click', function() {
+                AddCategory();
+            });
+        });
 
-            function LoadData() {
-                $.ajax({
-                    url: '/Category/GetData',
-                    type: 'GET',
-                    success: function (res) {
-                        if (res.TotalItems > 0) {
-                            var items = res.data;
-                            var html = "";
-                            for (let i = 0; i < res.TotalItems; i++) {
-                                html += "<tr>";
-                                html += "<td>"+(i+1)+"</td>";
-                                html += "<td>" + items[i].CatName +"</td>";
-                                html += "<td>" + items[i].CatDescribe+"</td>";
-                                html += "<td>" + items[i].CreatedDate+"</td>";
-                                html += "<td><a href='#' class='btn btn-warning'>Sửa</a> | <a href='#' class='btn btn-danger'>Xóa</a></td>";
-                                html += "</tr>";
-                            }
-                            $('#show_data').html(html);
-                        }
-                        console.log(res);
+        function AddCategory() {
+            let nameCat = $('#nameCat').val();
+            let desCat = $('#desCat').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Category/AddCategory",
+                data: {
+
+                    "name": nameCat,
+                    "des": desCat
+                },
+                success: function(data) {
+                    if (data.code = 200) {
+                        alert(data.msg);
+                        ListCategory();
                     }
-                });
-            }
-        });   
+                    else {
+                        alert(data.msg);
+                    }
+                },
+            });
+        }
+
+        function ListCategory() {
+            $.ajax({
+                type: "GET",
+                url: "/Category/ListCategory",
+                success: function(response) {
+                    $("#show_data").html(response);
+                },
+            });
+        };
     </script>
 }

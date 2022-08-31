@@ -2,6 +2,7 @@
 
 namespace Website_demomvc.DTO
 {
+    [Serializable]
     public class Category
     {
         [Key]

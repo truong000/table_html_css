@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Website_demomvc.DTO;
+using Website_demomvc.Models.Product;
 
 namespace Website_demomvc.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    //[Microsoft.AspNetCore.Authorization.Authorize]
     public class ProductsController : Controller
     {
         private readonly Website_demomvcDbContext _context;
@@ -23,10 +24,23 @@ namespace Website_demomvc.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-              return _context.Products != null ? 
-                          View(await _context.Products.ToListAsync()) :
-                          Problem("Entity set 'Website_demomvcDbContext.Products'  is null.");
+            return _context.Products != null ?
+                        View(await _context.Products.ToListAsync()) :
+                        Problem("Entity set 'Website_demomvcDbContext.Products'  is null.");
         }
+
+        [HttpPost]
+        public IActionResult Search(string search)
+        {
+            var product = _context.Products.ToList();
+            if (!string.IsNullOrEmpty(search))
+            {
+                product = product.Where(p => p.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+            return PartialView("ListProduct", _context.Products.Find(search));
+        }
+
+
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -159,6 +173,12 @@ namespace Website_demomvc.Controllers
         private bool ProductExists(int id)
         {
           return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        [HttpPost]
+        public IActionResult SearchProduct(string name)
+        {
+            List<Product> list = _context.Products.Where(x => x.Name.Contains(name)).ToList();
+            return PartialView("_productPartialView", list);
         }
     }
 }

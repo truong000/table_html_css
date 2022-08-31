@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Website_demomvc.DTO;
 using Website_demomvc.Models;
 
 namespace Website_demomvc.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize]
+    //[Microsoft.AspNetCore.Authorization.Authorize]
     public class HomeController : Controller
     {
 
-        private readonly ILogger<HomeController> _logger;
+        private readonly Website_demomvcDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(Website_demomvcDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
+        //public JsonResult LoadData()
+        //{
+        //    List<Product> listProduct = new List<Product>();
+        //    return Json( new {data = listProduct});
+        //}
 
         public IActionResult Privacy()
         {
